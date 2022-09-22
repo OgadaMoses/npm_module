@@ -11,10 +11,24 @@ String.prototype.reverse = function() {
   
     // Returns content processed for palindrome testing.
     this.processedContent = function processedContent() {
-      return this.content.toLowerCase();
+      return this.letters().toLowerCase();
     }
   
     // Returns true if the phrase is a palindrome, false otherwise.
+    this.palindrome = function palindrome() {
+      return this.processedContent() === this.processedContent().reverse();
+    }
+    // Returns the letters in the content
+    this.letters = function letters(){
+      let theLetters = [];
+      for (let i = 0; i < this.content.length; i++) {
+        if (this.content.charAt(i).match(/[a-zA-Z]/)) {
+          theLetters.push(this.content.charAt(i));
+        }
+      }
+      return theLetters.join("");
+    }
+    //Return true if phrase is a palindrome, false otherwise.
     this.palindrome = function palindrome() {
       return this.processedContent() === this.processedContent().reverse();
     }
